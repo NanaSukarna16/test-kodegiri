@@ -144,6 +144,18 @@
                                 </li>
                             </ul>
 
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Soal Nomor Satu</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li>
+                                    <a href="{{ route('soal-nomor-satu')}}">
+                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Klik untuk
+                                            melihat output nomor satu</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+
                         </div>
                     </nav>
                     <div class="pcoded-content">
