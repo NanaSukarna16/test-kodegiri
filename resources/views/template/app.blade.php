@@ -26,7 +26,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('template') }}/assets/css/jquery.mCustomScrollbar.css">
-    @yield('css-modal')
+    @yield('cdn')
 </head>
 
 <body>
@@ -135,7 +135,7 @@
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Fitur</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li>
-                                    <a>
+                                    <a href="{{ route('document.index')}}">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.form-components.main">Document
                                             Management</span>

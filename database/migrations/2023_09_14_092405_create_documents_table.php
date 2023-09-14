@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('content');
-            $table->string('signing');
+            $table->string('signing')->nullable();
             $table->timestamps();
         });
     }

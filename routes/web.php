@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SignatureController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +25,12 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('profile', ProfileController::class)->only('show', 'edit');
     Route::post('profile/{profile}', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::resource('document', DocumentController::class)->except('update', 'destroy');
+    Route::post('document/{document}/update', [DocumentController::class, 'update'])->name('document.update');
+    Route::delete('document/{document}/destroy', [DocumentController::class, 'destroy'])->name('document.destroy');
+    Route::get('signaturepad/{document}', [SignatureController::class, 'index'])->name('signaturepad.create');
+    Route::post('signaturepad/{document}', [SignatureController::class, 'upload'])->name('signaturepad.upload');
 });
 
 Auth::routes();
