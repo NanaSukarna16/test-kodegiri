@@ -12,7 +12,7 @@
         content="free dashboard template, free admin, free bootstrap template, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
     <meta name="author" content="codedthemes">
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset('template_fe') }}/images/SSF.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img') }}/kodegiri.png" type="image/x-icon">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
     <!-- Required Fremwork -->
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <a href="#">
-                            <img class="img-fluid" src="{{ asset('template_fe') }}/images/SSF.png" alt="Theme-Logo" />
+                            <img class="img-fluid" width="50%" src="{{ asset('img') }}/kodegiri.png" alt="Theme-Logo" />
                         </a>
                         <a class="mobile-options">
                             <i class="ti-more"></i>
@@ -90,12 +90,15 @@
                         <ul class="nav-right">
                             <li class="user-profile header-notification">
                                 <a href="#!">
-                                    {{-- <img src="{{ asset('template') }}/assets/images/avatar-4.jpg"
-                                        class="img-radius" alt="User-Profile-Image"> --}}
-                                    <span>{{ Auth::user()->nama}}</span>
+                                    <span>{{ Auth::user()->nama_lengkap}}</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
+                                    <li>
+                                        <a href="{{ route('profile.show', Auth::user()->id)}}">
+                                            <i class="ti-user"></i> Profile
+                                        </a>
+                                    </li>
                                     <li>
                                         <form action="{{ route('logout')}}" method="POST">
                                             @csrf
@@ -116,8 +119,6 @@
                 <div class="pcoded-wrapper">
                     <nav class="pcoded-navbar">
                         <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
-
-                        @if (Auth::user()->role == 'admin')
                         <div class="pcoded-inner-navbar main-menu">
 
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
@@ -130,235 +131,20 @@
                                     </a>
                                 </li>
                             </ul>
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Penerimaan</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"
-                                            data-i18n="nav.basic-components.main">Penerimaan</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{route('penerimaan')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.alert">Penerimaan</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{route('penerimaanByDonatur')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.alert">Penerimaan By Donatur</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
 
-                                    </ul>
-                                </li>
-                            </ul>
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Data</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Ziswaf</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{route('lembaga')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.alert">Lembaga</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{ route('donatur') }}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Donatur</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{ route('rekening') }}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Rekening</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{ route('program')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Program</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Relawan</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{ route('relawan')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.alert">Relawan</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{route('grup')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.breadcrumbs">Grup</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="{{ route('relasi') }}">
-                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Relasi</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('user') }}">
-                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Manage
-                                            User</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                            </ul>
-
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Kelola Web</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Tentang
-                                            Kami</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class="#">
-                                            <a href="{{ route('tentang_admin') }}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.alert">Tentang Kami</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('home_admin')}}">
-                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Halaman
-                                            Home</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('campaign')}}">
-                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Halaman
-                                            Program</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('berita_admin')}}">
-                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Halaman
-                                            Berita</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('download') }}">
-                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Halaman
-                                            Download</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        @else
-                        <div class="pcoded-inner-navbar main-menu">
-
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Fitur</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li>
-                                    <a href="{{ route('home')}}">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Penerimaan</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"
-                                            data-i18n="nav.basic-components.main">Penerimaan</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{route('penerimaan')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.alert">Penerimaan</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{route('penerimaanByDonatur')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext"
-                                                    data-i18n="nav.basic-components.alert">Penerimaan By Donatur</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Data</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li>
-                                    <a href="{{ route('donatur') }}">
+                                    <a>
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Donatur</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Document
+                                            Management</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                             </ul>
 
                         </div>
-                        @endif
-
                     </nav>
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -378,50 +164,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Warning Section Starts -->
-        <!-- Older IE warning message -->
-        <!--[if lt IE 9]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="assets/images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="assets/images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="assets/images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="assets/images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="assets/images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
         <!-- Warning Section Ends -->
         <!-- Required Jquery -->
 

@@ -1,17 +1,17 @@
-@extends('layouts.app')
+@extends('template.app')
 
-@section('content')
+@section('konten')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Selemat Datang dan Jangan Lupa bahagia') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     {{ __('You are logged in!') }}

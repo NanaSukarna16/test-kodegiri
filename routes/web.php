@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,11 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Auth::routes();
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('profile', ProfileController::class)->only('show', 'edit');
+    Route::post('profile/{profile}', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+Auth::routes();
