@@ -87,6 +87,12 @@
                                     <i class="ti-trash"></i>
                                 </button>
                             </form>
+                            <a href="{{route('send-email.create', $item->id)}}">
+                                <button class="btn btn-info btn-outline-info btn-icon" data-target="#exampleModal2"
+                                    type="button">
+                                    <i class="ti-email"></i>
+                                </button>
+                            </a>
                         </td>
                     </tr>
                     @empty

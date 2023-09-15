@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\SoalNomorSatuController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('document/{document}/destroy', [DocumentController::class, 'destroy'])->name('document.destroy');
     Route::get('signaturepad/{document}', [SignatureController::class, 'index'])->name('signaturepad.create');
     Route::post('signaturepad/{document}', [SignatureController::class, 'upload'])->name('signaturepad.upload');
+    Route::get('send-email/{document}', SendEmailController::class)->name('send-email.create');
 
     // soal nomor satu
     Route::get('soal-nomor-satu', SoalNomorSatuController::class)->name('soal-nomor-satu');
