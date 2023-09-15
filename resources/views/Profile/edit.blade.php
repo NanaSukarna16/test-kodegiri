@@ -44,6 +44,20 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Company</label>
+                <div class="col-sm-5">
+                    <input type="text" value="{{ $user->company}}" class="form-control {{ $errors->first('company') ? "
+                        is-invalid":""}}" class="form-control" name="company" placeholder="Company">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Divisi</label>
+                <div class="col-sm-5">
+                    <input type="text" value="{{ $user->divisi}}" class="form-control {{ $errors->first('divisi') ? "
+                        is-invalid":""}}" class="form-control" name="divisi" placeholder="Divisi">
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Foto Profil</label>
                 <div class="col-sm-5">
                     <input type="file" class="form-control {{ $errors->first('foto_profile') ? " is-invalid":""}}"

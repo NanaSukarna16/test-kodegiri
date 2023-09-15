@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Services\FileUploader;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -12,17 +12,9 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // 
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -38,25 +30,20 @@ class ProfileController extends Controller
      */
     public function show(User $profile)
     {
-        return view('Profile.index', [
-            'user' => $profile,
-        ]);
-    }
+        if (!$profile) {
+            return response()->json(['message' => 'Profil pengguna tidak ditemukan'], 404);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $profile)
-    {
-        return view('Profile.edit', [
-            'user' => $profile,
-        ]);
+        return response()->json([
+            'message' => 'Success',
+            'data' => $profile,
+        ], 200);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $profile, FileUploader $fileUploader)
+    public function update(Request $request, User $profile)
     {
         $validated = $request->validate([
             'nama_lengkap' => ['required', 'string', 'min:3', 'max:255'],
@@ -66,18 +53,12 @@ class ProfileController extends Controller
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($profile->id)],
         ]);
 
-        $profile->update(
-            array_merge(
-                $validated,
-                [
-                    'foto_profil' => $fileUploader->upload($request->file('foto_profile'), 'avatar'),
-                ]
-            )
-        );
+        $profile->update($validated);
 
-        return redirect()
-            ->route('profile.show', $profile->id)
-            ->with('status', 'Profile successfully updated');
+        return response()->json([
+            'message' => 'Success',
+            'data' => $profile,
+        ]);
     }
 
     /**

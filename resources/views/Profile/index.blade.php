@@ -35,7 +35,8 @@
                     alt="User-Profile-Image" style="max-height: 100px;">
             </div>
             <h6 class="f-w-600 m-t-25 m-b-10">{{ $user->nama_lengkap }}</h6>
-            <p class="text-muted">{{ $user->email}} | {{ $user->nomor_foto}}</p>
+            <p class="text-muted">{{ $user->email}} | {{ $user->nomor_hp}} | {{ $user->company}} | {{ $user->divisi}}
+            </p>
             <hr />
             <div class="row justify-content-center user-social-link">
                 <div class="col-auto"><a href="#!"><i class="fa fa-facebook text-facebook"></i></a></div>
